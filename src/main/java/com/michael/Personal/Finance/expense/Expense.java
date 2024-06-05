@@ -1,2 +1,8 @@
-package com.michael.Personal.Finance.expense;public class Expense {
+package com.michael.Personal.Finance.expense;
+
+import com.michael.Personal.Finance.common.BaseEntity;
+import jakarta.persistence.Entity;
+
+@Entity
+public class Expense extends BaseEntity {
 }

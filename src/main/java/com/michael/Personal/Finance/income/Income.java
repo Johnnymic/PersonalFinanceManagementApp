@@ -1,2 +1,23 @@
-package com.michael.Personal.Finance.income;public class Income {
+package com.michael.Personal.Finance.income;
+
+import com.michael.Personal.Finance.common.BaseEntity;
+import com.michael.Personal.Finance.users.AppUser;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Income extends BaseEntity {
+
+    @Column(nullable = false)
+    private Double amount;
+
+    @Column(nullable = false)
+    private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private AppUser user;
+
 }
