@@ -1,2 +1,4 @@
-package com.michael.Personal.Finance.users;public class Token {
+package com.michael.Personal.Finance.users;
+
+public class RefreshToken {
 }
