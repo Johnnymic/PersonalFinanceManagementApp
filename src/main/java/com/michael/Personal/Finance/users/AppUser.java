@@ -59,8 +59,8 @@ public class AppUser  implements UserDetails , Principal {
 
     @ManyToMany
     Set<Role> roles = new HashSet<>();
-    @OneToMany(mappedBy = "user")
-    private Set<Account> accounts = new HashSet<>();
+//    @OneToMany(mappedBy = "user")
+//    private Set<Account> accounts = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<Income> incomes = new HashSet<>();

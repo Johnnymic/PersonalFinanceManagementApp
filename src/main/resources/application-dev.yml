@@ -4,9 +4,15 @@ spring:
     username: username
     password: password
     driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 10    # Maximum number of connections in the pool
+      idle-timeout: 60000      # Maximum idle time for connections (in milliseconds)
+      pool-name: HikariPool-1  # Name of the connection pool
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: false
     properties:
       hibernate:
@@ -37,5 +43,4 @@ application:
       refresh-token:
         expiration: 604800000 # 7 days
 
-server:
-  port: 8088
+
