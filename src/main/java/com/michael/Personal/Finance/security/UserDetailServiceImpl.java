@@ -1,4 +1,4 @@
-package com.michael.Personal.Finance.secuirty;
+package com.michael.Personal.Finance.security;
 
 import com.michael.Personal.Finance.users.AppUserRepository;
 import lombok.RequiredArgsConstructor;

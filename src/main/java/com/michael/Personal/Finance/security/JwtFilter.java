@@ -1,4 +1,4 @@
-package com.michael.Personal.Finance.secuirty;
+package com.michael.Personal.Finance.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
