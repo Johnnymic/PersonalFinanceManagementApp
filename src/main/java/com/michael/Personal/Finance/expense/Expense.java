@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+
 public class Expense extends BaseEntity {
     @Column(nullable = false)
     private Double amount;
@@ -18,4 +19,6 @@ public class Expense extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private AppUser user;
+
+
 }
