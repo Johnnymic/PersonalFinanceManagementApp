@@ -1,9 +1,9 @@
 package com.michael.Personal.Finance.utils;
 
 import lombok.Getter;
-import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
+
 @Getter
-public enum ResponseMessage {
+public enum Response {
 
         SUCCESS("00", "Approved or completed successfully"),
         FAILED("99", "Unsuccessful transaction"),
@@ -44,6 +44,6 @@ public enum ResponseMessage {
       private String responseCode;
 
       private String responseMessage;
-      ResponseMessage(String responseCode, String responseMessage) {
+      Response(String responseCode, String responseMessage) {
     }
 }
