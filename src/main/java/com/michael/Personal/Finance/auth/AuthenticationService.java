@@ -1,5 +1,7 @@
 package com.michael.Personal.Finance.auth;
 
+import com.michael.Personal.Finance.email.EmailService;
+import com.michael.Personal.Finance.email.EmailServiceTemplate;
 import com.michael.Personal.Finance.users.AccessTokenRepository;
 import com.michael.Personal.Finance.users.AppUser;
 import com.michael.Personal.Finance.users.AppUserRepository;
@@ -16,6 +18,11 @@ public class AuthenticationService {
     private  final AccessTokenRepository accessTokenRepository;
 
     private  final PasswordEncoder passwordEncoder;
+
+    private  final EmailService emailService;
+
+
+    private String activationUrl;
 
 
     public AuthenticationResponse registerUser(AuthenticationRequest authenticationRequest) {
@@ -34,14 +41,21 @@ public class AuthenticationService {
 
           sendValidationEmail(newUser);
 
-            return response.setToken();
+            return null;
     }
 
     private void sendValidationEmail(AppUser newUser) {
-            String  newToken = generateAndSaveActivationToken(newUser);
+
+        String  newToken = generateAndSaveActivationToken(newUser);
+        emailService.sendEmail(newUser.getEmail(), newUser.getFullName(), activationUrl, newToken, EmailServiceTemplate.ACTIVATE_ACCOUNT,"activation");
+
     }
 
     private String generateAndSaveActivationToken(AppUser newUser) {
+        String otp = generateOtp(6);
+    }
+
+    private String generateOtp(int i) {
     }
 
 

@@ -115,4 +115,7 @@ public class AppUser  implements UserDetails , Principal {
     }
 
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }
