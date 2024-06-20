@@ -8,20 +8,20 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class TokenService {
+public class AccessTokenService {
 
 
-    private  AccessTokenRepository accessTokenRepository;
+    private final AccessTokenRepository repository;
 
 
-    private String generateAndSaveActivationToken(AppUser newUser) {
+    public String generateAndSaveActivationToken(AppUser newUser) {
         String otp = generateOtp(6);
         AccessToken token = new AccessToken();
         token.setUser(newUser);
         token.setCreatedAt(LocalDateTime.now());
         token.setExpiresAt(LocalDateTime.now().plusSeconds(30));
-        token.setAccessToken(otp);
-        accessTokenRepository.save(token);
+        token.setToken(otp);
+        repository.save(token);
         return  otp;
     }
 
