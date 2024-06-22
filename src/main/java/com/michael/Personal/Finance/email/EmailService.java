@@ -5,12 +5,10 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.context.IContext;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.util.Date;
@@ -30,7 +28,7 @@ public class EmailService {
 
     private final SpringTemplateEngine templateEngine;
     @Async
-    public void sendEmail(String to,String username, String confirmationUrl, String activationCode,String subject,EmailServiceTemplate template) throws MessagingException {
+    public void sendEmail(String to, String username, String confirmationUrl, String activationCode, EmailServiceTemplate template, String subject) throws MessagingException {
      String templateName;
 
      if(template == null){

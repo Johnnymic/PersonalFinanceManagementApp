@@ -7,10 +7,10 @@ import lombok.Getter;
 
 public enum EmailServiceTemplate {
 
-    ACTIVATE_ACCOUNT("activate_account"),
-    CONFIRM_EMAIL("confirm-email"),
-    RESET_PASSWORD("reset-password"),
-    WELCOME_EMAIL("welcome-email");
+    ACTIVATE_ACCOUNT("activate_account");
+  //  CONFIRM_EMAIL("confirm-email"),
+//    RESET_PASSWORD("reset-password"),
+ //   WELCOME_EMAIL("welcome-email");
 
 
     private final String name;

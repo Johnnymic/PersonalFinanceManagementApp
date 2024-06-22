@@ -27,6 +27,7 @@ public class AccessToken {
 
     private LocalDateTime  expiresAt;
 
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private AppUser user;
