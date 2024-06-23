@@ -51,7 +51,7 @@ public class AppUser  implements UserDetails , Principal {
 
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Address address;
 
     private boolean isEnabled;

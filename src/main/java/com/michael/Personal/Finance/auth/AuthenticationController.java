@@ -1,5 +1,6 @@
 package com.michael.Personal.Finance.auth;
 
+import com.michael.Personal.Finance.utils.DefaultApiResponse;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/user")
-    public ResponseEntity<AuthenticationResponse> registerCustomer(@RequestBody @Valid AuthenticationRequest authenticationRequest) throws MessagingException {
+    public ResponseEntity<DefaultApiResponse<AuthenticationResponse>> registerCustomer(@RequestBody @Valid AuthenticationRequest authenticationRequest) throws MessagingException {
         return ResponseEntity.ok(authenticationService.registerUser(authenticationRequest));
     }
 

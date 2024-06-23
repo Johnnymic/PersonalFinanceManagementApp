@@ -6,6 +6,8 @@ import com.michael.Personal.Finance.users.AccessToken;
 import com.michael.Personal.Finance.users.AccessTokenRepository;
 import com.michael.Personal.Finance.users.AppUser;
 import com.michael.Personal.Finance.users.AppUserRepository;
+import com.michael.Personal.Finance.utils.DefaultApiResponse;
+import com.michael.Personal.Finance.utils.ResponseMessage;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.antlr.v4.runtime.Token;
@@ -37,11 +39,19 @@ public class AuthenticationService {
     private String activationUrl;
 
 
-    public AuthenticationResponse registerUser(AuthenticationRequest authenticationRequest) throws MessagingException {
-        AuthenticationResponse response = new AuthenticationResponse();
+    @Transactional
+    public DefaultApiResponse<AuthenticationResponse> registerUser(AuthenticationRequest authenticationRequest) throws MessagingException {
+        DefaultApiResponse response = new DefaultApiResponse();
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse();
+        //check for role and it should be user
          boolean existEmail = userRepository.findByEmail(authenticationRequest.getEmail()).isPresent();
+
          if(existEmail){
              // return a default api request
+              response.setStatus(ResponseMessage.ACCOUNT_ALREADY_EXITS.getResponseMessage());
+              response.setMessage(ResponseMessage.ACCOUNT_ALREADY_EXITS.getResponseCode());
+
+              return response;
          }
          AppUser newUser = new AppUser();
          newUser.setEmail(authenticationRequest.getEmail());
@@ -51,9 +61,12 @@ public class AuthenticationService {
 
 
          String regOTP=  sendValidationEmail(newUser);
-         response.setToken(regOTP);
+         authenticationResponse.setToken(regOTP);
 
-            return  response;
+         response.setStatus(ResponseMessage.SUCCESS.getResponseMessage());
+         response.setMessage(ResponseMessage.SUCCESS.getResponseCode());
+         response.setData(authenticationResponse);
+         return  response;
     }
 
     private String sendValidationEmail(AppUser newUser) throws MessagingException {
