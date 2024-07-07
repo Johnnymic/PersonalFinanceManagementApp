@@ -87,7 +87,6 @@ public class JwtService {
 
         return Jwts.builder()
                 .setClaims(extractClaims)
-                .setClaims(extractClaims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .claim("authorities", authorities)
